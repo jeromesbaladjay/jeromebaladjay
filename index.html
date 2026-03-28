@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerome Baladjay | Web Designer</title>
+<link rel="icon" type="Logo.png" href="Logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            light: '#0284c7', /* Ocean Blue */
+                            dark: '#38bdf8',  /* Neon Sky Blue */
+                        },
+                        bg: {
+                            light: '#f8fafc',
+                            dark: '#050810',  /* Very deep blue/black matching the image vibe */
+                        },
+                        surface: {
+                            light: '#ffffff',
+                            dark: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background-color: #38bdf8; border-radius: 20px; }
+html:not(.dark) ::-webkit-scrollbar-thumb { background-color: #0284c7; }
+
+/* Scroll Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+
+/* ✅ NEW: Shared Image Style */
+.img-square-rounded {
+    border-radius: 20px; /* adjust here (15px / 25px if you want) */
+    object-fit: cover;
+}
+
+/* Outline Text Effect */
+.text-outline {
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255,255,255,0.1);
+}
+html:not(.dark) .text-outline {
+    -webkit-text-stroke: 2px rgba(0,0,0,0.1);
+}
+    </style>
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-slate-800 dark:text-slate-300 font-sans transition-colors duration-500 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 bg-bg-light/90 dark:bg-bg-dark/90 backdrop-blur-md"></div>
+        <div class="container mx-auto px-6 py-4 relative flex items-center justify-between">
+            
+            <!-- Logo -->
+<a href="#home" class="flex items-center gap-3 group">
+    <div class="w-20 h-20 rounded-[20%] bg-primary-light dark:bg-primary-dark flex items-center justify-center overflow-hidden">
+        <!-- Replace this with your image -->
+        <img src="Logo.png" alt="Logo" class="w-full h-full object-cover">
+    </div>
+    <div class="leading-none text-left">
+        <span class="block font-display font-black text-lg tracking-tight text-slate-900 dark:text-white uppercase">Web</span>
+        <span class="block font-display font-black text-lg tracking-tight text-slate-900 dark:text-white uppercase">Designer</span>
+    </div>
+</a>
+
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#home" class="px-4 py-2 rounded-full bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 font-bold">Home</a>
+                <a href="#about" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors">About</a>
+                <a href="#services" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors">Services</a>
+                <a href="#projects" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors">Contact Us</a>
+            </nav>
+
+            <!-- Actions (Theme Toggle & CTA) -->
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-primary-light dark:hover:text-primary-dark transition-colors" aria-label="Toggle Theme">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                
+                <!-- Match Image Button Style -->
+<a href="Jerome Baladjay CV.pdf" target="_blank" download class="hidden md:inline-flex items-center bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 rounded-full pl-2 pr-6 py-1.5 font-bold hover:scale-105 transition-transform">
+    <span class="w-8 h-8 rounded-full bg-slate-900 dark:bg-black text-white flex items-center justify-center mr-3">
+        <i class="fas fa-chevron-right text-xs"></i>
+    </span>
+    Download CV
+</a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-800 dark:text-white">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-surface-light dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 shadow-xl py-4 px-6 flex-col gap-4 font-medium md:hidden">
+            <a href="#home" class="mobile-link block py-2 text-primary-light dark:text-primary-dark font-bold">Home</a>
+            <a href="#about" class="mobile-link block py-2 hover:text-primary-light dark:hover:text-primary-dark">About</a>
+            <a href="#services" class="mobile-link block py-2 hover:text-primary-light dark:hover:text-primary-dark">Services</a>
+            <a href="#projects" class="mobile-link block py-2 hover:text-primary-light dark:hover:text-primary-dark">Projects</a>
+            <a href="#contact" class="mobile-link block py-2 hover:text-primary-light dark:hover:text-primary-dark">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- Floating Social Bar (Right Side) -->
+<div class="fixed right-6 top-1/2 -translate-y-1/2 flex-col gap-4 hidden lg:flex z-40">
+    <a href="https://www.facebook.com/jeromesbaladjay/" target="_blank" class="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center hover:bg-primary-light hover:border-primary-light dark:hover:bg-primary-dark dark:hover:border-primary-dark text-slate-600 dark:text-slate-400 hover:text-white dark:hover:text-slate-900 transition-all hover:scale-110">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/ay.rome/" target="_blank" class="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center hover:bg-primary-light hover:border-primary-light dark:hover:bg-primary-dark dark:hover:border-primary-dark text-slate-600 dark:text-slate-400 hover:text-white dark:hover:text-slate-900 transition-all hover:scale-110">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/jeromesbaladjay/" target="_blank" class="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center hover:bg-primary-light hover:border-primary-light dark:hover:bg-primary-dark dark:hover:border-primary-dark text-slate-600 dark:text-slate-400 hover:text-white dark:hover:text-slate-900 transition-all hover:scale-110">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+</div>
+
+    <main>
+        
+        <main>
+        <!-- Hero Section: Clean 2-Column Grid -->
+        <section id="home" class="pt-32 pb-16 min-h-screen flex items-center relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Col 1: Text Content -->
+                    <div class="reveal z-20">
+                        <p class="text-primary-light dark:text-primary-dark font-bold tracking-[0.3em] uppercase mb-6 text-sm">Available for Work</p>
+                        <h1 class="font-display text-5xl md:text-7xl xl:text-8xl font-black leading-[0.9] text-slate-900 dark:text-white uppercase tracking-tighter mb-8">
+                            WEB <br> <span class="text-primary-light dark:text-primary-dark">DESIGNER</span>
+                        </h1>
+                        <p class="max-w-lg text-slate-600 dark:text-slate-400 text-lg mb-10 leading-relaxed">
+                            Versatile UI/UX Designer & QA Specialist based in the Philippines. I build accessible, high-performance websites with a focus on quality.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#projects" class="inline-flex items-center bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 rounded-full px-8 py-4 font-bold hover:scale-105 transition-all shadow-lg shadow-primary-light/20">
+                                My Projects <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Col 2: Image Container -->
+                    <div class="reveal delay-200 relative">
+                        <div class="relative w-full max-w-md mx-auto lg:ml-auto">
+                            <!-- Image with 20% Radius -->
+                            <img src="Logo.png" 
+                                 alt="Jerome" 
+                                 class="img-square-rounded w-full shadow-2xl relative z-10">
+                            
+                            <!-- Decorative Background Elements -->
+                            <div class="absolute -top-6 -right-6 w-32 h-32 bg-primary-light dark:bg-primary-dark/20 rounded-full blur-3xl opacity-50"></div>
+                            <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-primary-light dark:bg-primary-dark/30 rounded-full blur-3xl opacity-30"></div>
+                            
+                            <!-- Floating Card -->
+                            <div class="absolute bottom-10 -right-4 lg:-right-10 bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-2xl z-20 border border-slate-100 dark:border-slate-800 hidden sm:block">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Experience</p>
+                                        <p class="font-bold text-slate-900 dark:text-white">1+ Year Pro</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- About Section (FINAL FIXED VERSION) -->
+<section id="about" class="py-20 relative z-10">
+    <div class="container mx-auto px-4 md:px-6">
+        
+        <div class="bg-[#f1f5f9] dark:bg-[#0a0f1c] rounded-[2rem] p-8 md:p-16 border border-slate-200 dark:border-slate-800">
+            
+            <!-- ✅ items-stretch makes both columns equal height -->
+            <div class="grid lg:grid-cols-2 gap-16 items-stretch">
+                
+                <!-- Left: Text -->
+                <div class="reveal">
+                    <p class="text-primary-light dark:text-primary-dark font-bold tracking-widest uppercase mb-4 text-sm">
+                        About
+                    </p>
+
+                    <h2 class="font-display text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                        Are you looking for creative design? Let me help you!
+                    </h2>
+
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        I am Jerome Baladjay, a versatile Web Designer, QA, and UI-UX Designer based in the Philippines. I specialize in front-end development, usability testing, and strict process inspection.
+                    </p>
+
+                    <p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                        Beyond building user-friendly websites, I develop custom browser tools like Broken Link Checkers and Alt Text Viewers to streamline quality assurance processes and website auditing.
+                    </p>
+
+                    <!-- Skills -->
+                    <div class="grid sm:grid-cols-2 gap-4 mb-10">
+                        <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                            <div class="w-5 h-5 rounded bg-primary-light dark:bg-primary-dark flex items-center justify-center text-white text-xs">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            UI/UX Design & CSS
+                        </div>
+
+                        <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                            <div class="w-5 h-5 rounded bg-primary-light dark:bg-primary-dark flex items-center justify-center text-white text-xs">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            Quality Assurance
+                        </div>
+
+                        <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                            <div class="w-5 h-5 rounded bg-primary-light dark:bg-primary-dark flex items-center justify-center text-white text-xs">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            HTML / SEO
+                        </div>
+
+                        <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300 text-sm">
+                            <div class="w-5 h-5 rounded bg-primary-light dark:bg-primary-dark flex items-center justify-center text-white text-xs">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            Process Inspection
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <a href="#projects" class="inline-flex items-center bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 rounded-full pl-2 pr-6 py-2 font-bold hover:scale-105 transition-transform">
+                        <span class="w-8 h-8 rounded-full bg-slate-900 dark:bg-black text-white flex items-center justify-center mr-3">
+                            <i class="fas fa-chevron-right text-xs"></i>
+                        </span>
+                        More About
+                    </a>
+                </div>
+
+                <!-- Right: Image -->
+                <div class="relative reveal delay-200 flex">
+                    
+                    <!-- ✅ Full height container -->
+                    <div class="relative w-full h-full max-w-md mx-auto lg:ml-auto">
+                        
+                        <!-- ✅ Image fills height -->
+                        <img src="Jerome Baladjay.jpeg" 
+                             alt="Jerome" 
+                             class="img-square-rounded w-full h-full object-cover shadow-2xl">
+
+
+
+                        <!-- Glow -->
+                        <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-primary-light dark:bg-primary-dark/30 rounded-full blur-3xl opacity-30"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 relative z-10">
+            <div class="container mx-auto px-6">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                    <p class="text-primary-light dark:text-primary-dark font-bold tracking-widest uppercase mb-4 text-sm">Services</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">
+                        What I Do
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary-light dark:hover:border-primary-dark transition-colors group reveal">
+                        <div class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 text-primary-light dark:text-primary-dark flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white mb-4">Web Design</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Creating responsive, beautiful, and user-friendly websites using modern tools and Duda platforms.
+                        </p>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary-light dark:hover:border-primary-dark transition-colors group reveal delay-100">
+                        <div class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 text-primary-light dark:text-primary-dark flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-bezier-curve"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white mb-4">UI/UX Design</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Crafting intuitive user interfaces that prioritize user needs, accessibility, and modern aesthetics.
+                        </p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary-light dark:hover:border-primary-dark transition-colors group reveal delay-200">
+                        <div class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 text-primary-light dark:text-primary-dark flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white mb-4">QA & Control</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Executing rigorous test plans, monitoring processes, and conducting thorough web inspections.
+                        </p>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary-light dark:hover:border-primary-dark transition-colors group reveal delay-300">
+                        <div class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 text-primary-light dark:text-primary-dark flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white mb-4">Custom Tools</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Building custom browser extensions (Broken Link Checkers) to streamline auditing workflows.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-20 relative z-10">
+    <div class="container mx-auto px-6">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+            <div>
+                <p class="text-primary-light dark:text-primary-dark font-bold tracking-widest uppercase mb-4 text-sm">
+                    Portfolio
+                </p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">
+                    My Projects
+                </h2>
+            </div>
+
+            <div class="mt-6 md:mt-0">
+                <a href="#contact" class="inline-flex items-center text-slate-900 dark:text-white font-bold hover:text-primary-light dark:hover:text-primary-dark transition-colors gap-2">
+                    View All Work <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+    
+    <!-- Project 1 -->
+    <div class="group reveal">
+        <div class="overflow-hidden rounded-2xl border-2 border-slate-300 dark:border-slate-700 transition-all hover:-translate-y-2 hover:shadow-xl">
+            
+            <!-- Image -->
+            <div class="relative bg-slate-100 dark:bg-slate-900">
+                <img src="IOS.png" 
+                     alt="Io's Fruity Soda" 
+                     class="w-full h-auto object-contain">
+
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <a href="https://iosfruitysoda.vercel.app/" target="_blank"
+                       class="bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all">
+                        View Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Text -->
+            <div class="p-6">
+                <p class="text-primary-light dark:text-primary-dark text-xs font-bold uppercase mb-2">
+                    Business Website
+                </p>
+                <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white">
+                    Io's Fruity Soda
+                </h3>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="group reveal delay-100">
+        <div class="overflow-hidden rounded-2xl border-2 border-slate-300 dark:border-slate-700 transition-all hover:-translate-y-2 hover:shadow-xl">
+            
+            <div class="relative bg-slate-100 dark:bg-slate-900">
+                <img src="Josh Guitar.png" 
+                     alt="Josh Guitar Setup" 
+                     class="w-full h-auto object-contain">
+
+                <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <a href="https://joshguitarsetup.vercel.app/" target="_blank"
+                       class="bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all">
+                        View Project
+                    </a>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <p class="text-primary-light dark:text-primary-dark text-xs font-bold uppercase mb-2">
+                    Business Website
+                </p>
+                <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white">
+                    Josh Guitar Setup
+                </h3>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="group reveal delay-200">
+        <div class="overflow-hidden rounded-2xl border-2 border-slate-300 dark:border-slate-700 transition-all hover:-translate-y-2 hover:shadow-xl">
+            
+            <div class="relative bg-slate-100 dark:bg-slate-900">
+                <img src="Tribo Pilipino.png" 
+                     alt="Tribo Pilipino" 
+                     class="w-full h-auto object-contain">
+
+                <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <a href="https://tribopilipino.vercel.app/" target="_blank"
+                       class="bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all">
+                        View Project
+                    </a>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <p class="text-primary-light dark:text-primary-dark text-xs font-bold uppercase mb-2">
+                    Game Website
+                </p>
+                <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white">
+                    Tribo Pilipino
+                </h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+</section>
+
+               <div class="reveal mt-12 pt-12 pb-12 px-6 md:px-20 border-t border-slate-200 dark:border-slate-800">
+    <p class="text-primary-light dark:text-primary-dark font-bold tracking-widest uppercase mb-4 text-sm text-center">Achievements</p>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-10 text-center">Certificates & Awards</h2>
+    
+    <div class="grid md:grid-cols-3 gap-6">
+        <!-- Cert 1 -->
+        <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center hover:border-primary-light dark:hover:border-primary-dark transition-colors">
+            <div class="w-16 h-16 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 flex items-center justify-center text-primary-light dark:text-primary-dark text-2xl mb-4">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <h4 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Duda Certified Professional</h4>
+            <p class="text-sm text-slate-500">Platform Specialist, Editor 2.0 & Web Design Certified.</p>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center hover:border-primary-light dark:hover:border-primary-dark transition-colors">
+            <div class="w-16 h-16 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 flex items-center justify-center text-primary-light dark:text-primary-dark text-2xl mb-4">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h4 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Top 1 Project Demo</h4>
+            <p class="text-sm text-slate-500">Awarded during Digibeacon Internship for ITSM & CRM Demo.</p>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center hover:border-primary-light dark:hover:border-primary-dark transition-colors">
+            <div class="w-16 h-16 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 flex items-center justify-center text-primary-light dark:text-primary-dark text-2xl mb-4">
+                <i class="fas fa-award"></i>
+            </div>
+            <h4 class="font-bold text-lg text-slate-900 dark:text-white mb-2">ClickUp Expert</h4>
+            <p class="text-sm text-slate-500">Completed Novice, Intermediate, and Expert levels.</p>
+        </div>
+    </div>
+</div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 relative z-10 border-t border-slate-200 dark:border-slate-800">
+            <div class="container mx-auto px-6">
+                
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <div class="reveal">
+                        <p class="text-primary-light dark:text-primary-dark font-bold tracking-widest uppercase mb-4 text-sm">Get In Touch</p>
+                        <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                            Let's build something brilliant together.
+                        </h2>
+                        <p class="text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-md">
+                            Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-900 dark:text-white text-lg">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider font-bold">Email</p>
+                                    <a href="mailto:jeromesbaladjay@gmail.com" class="font-bold text-lg text-slate-900 dark:text-white hover:text-primary-light dark:hover:text-primary-dark transition-colors">jeromesbaladjay@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-900 dark:text-white text-lg">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider font-bold">Phone</p>
+                                    <a href="tel:09914687788" class="font-bold text-lg text-slate-900 dark:text-white hover:text-primary-light dark:hover:text-primary-dark transition-colors">0991 468 7788</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-900 dark:text-white text-lg">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase tracking-wider font-bold">Location</p>
+                                    <p class="font-bold text-lg text-slate-900 dark:text-white">San Pedro, Laguna Philippines</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form with High Contrast Visible Button Frame -->
+                    <div class="reveal delay-200">
+                        <form class="bg-surface-light dark:bg-[#0a0f1c] p-8 md:p-10 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-xl">
+                            
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">First Name</label>
+                                    <input type="text" class="w-full bg-transparent border-b-2 border-slate-300 dark:border-slate-700 px-0 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-primary-light dark:focus:border-primary-dark transition-colors" placeholder="Jerome">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Last Name</label>
+                                    <input type="text" class="w-full bg-transparent border-b-2 border-slate-300 dark:border-slate-700 px-0 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-primary-light dark:focus:border-primary-dark transition-colors" placeholder="Baladjay">
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Email Address</label>
+                                <input type="email" class="w-full bg-transparent border-b-2 border-slate-300 dark:border-slate-700 px-0 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-primary-light dark:focus:border-primary-dark transition-colors" placeholder="john@example.com">
+                            </div>
+
+                            <div class="mb-10">
+                                <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Message</label>
+                                <textarea rows="3" class="w-full bg-transparent border-b-2 border-slate-300 dark:border-slate-700 px-0 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-primary-light dark:focus:border-primary-dark transition-colors resize-none" placeholder="How can I help you?"></textarea>
+                            </div>
+
+                            <!-- User Requested Button Style (Visible Frame, Hover, High Contrast text) -->
+                            <button type="button" class="w-full md:w-auto px-10 py-4 border-2 border-primary-light dark:border-primary-dark text-slate-900 dark:text-white font-bold rounded-full hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark dark:hover:text-slate-900 transition-all duration-300 shadow-lg shadow-transparent hover:shadow-primary-light/30 dark:hover:shadow-primary-dark/30">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Matched Style) -->
+    <footer class="bg-[#f8fafc] dark:bg-[#02050a] py-12 border-t border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+                
+<a href="#home" class="flex items-center gap-3 group">
+    <div class="w-20 h-20 rounded-[20%] bg-primary-light dark:bg-primary-dark flex items-center justify-center overflow-hidden">
+        <!-- Replace this with your image -->
+        <img src="Logo.png" alt="Logo" class="w-full h-full object-cover">
+    </div>
+    <div class="leading-none text-left">
+        <span class="block font-display font-black text-lg tracking-tight text-slate-900 dark:text-white uppercase">Web</span>
+        <span class="block font-display font-black text-lg tracking-tight text-slate-900 dark:text-white uppercase">Designer</span>
+    </div>
+</a>
+
+
+                <nav class="flex flex-wrap justify-center gap-8 font-medium text-slate-600 dark:text-slate-300 text-sm">
+                    <a href="#home" class="hover:text-primary-light dark:hover:text-primary-dark font-bold transition-colors">Home</a>
+                    <a href="#about" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors">About</a>
+                    <a href="#services" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors">Services</a>
+                    <a href="#projects" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-primary-light dark:hover:text-primary-dark transition-colors">Contact Us</a>
+                </nav>
+            </div>
+            
+            <div class="text-center pt-8 border-t border-slate-200 dark:border-slate-800 text-slate-500 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2024 Jerome Baladjay. All Rights Reserved.</p>
+                <div class="flex gap-4">
+                    <a href="https://www.linkedin.com/in/jeromesbaladjay/" target="_blank" class="text-slate-400 hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="fab fa-linkedin text-lg"></i></a>
+                    <a href="https://github.com/jeromesbaladjay" target="_blank" class="text-slate-400 hover:text-primary-light dark:hover:text-primary-dark transition-colors"><i class="fab fa-github text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Theme Toggle Logic ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+            
+            // Initial Check
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                if (htmlElement.classList.contains('dark')) {
+                    localStorage.theme = 'dark';
+                } else {
+                    localStorage.theme = 'light';
+                }
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const menuIcon = mobileMenuBtn.querySelector('i');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                if(mobileMenu.classList.contains('hidden')){
+                    menuIcon.classList.replace('fa-times', 'fa-bars');
+                } else {
+                    menuIcon.classList.replace('fa-bars', 'fa-times');
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    menuIcon.classList.replace('fa-times', 'fa-bars');
+                });
+            });
+
+            // --- Scroll Reveal Animation ---
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+
+            // --- Navbar Background on Scroll ---
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-sm');
+                } else {
+                    navbar.classList.remove('shadow-sm');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
