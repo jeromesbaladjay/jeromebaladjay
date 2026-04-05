@@ -491,6 +491,9 @@ I pay close attention to each requirement provided, carefully analyzing and vali
             </div>
         </section>
 
+
+ <!-- MY PROJECT PORFOLIO -->
+
 <section id="projects" class="py-20 relative z-10">
     <div class="container mx-auto px-6">
         
@@ -569,15 +572,14 @@ I pay close attention to each requirement provided, carefully analyzing and vali
                 </div>
             </div>
 
-            <!-- TOOL PROJECT -->
+            <!-- TOOL 1 (EXISTING) -->
             <div class="group reveal">
                 <div class="overflow-hidden rounded-2xl border-2 border-slate-300 dark:border-slate-700 hover:-translate-y-2 hover:shadow-xl transition-all">
-                    
                     <div class="relative bg-slate-100 dark:bg-slate-900">
-                        <img src="Checker Icon.png" alt="Content Checker Tool" class="w-full h-full object-cover">
+                        <img src="Checker Icon.png" alt="Content Checker" class="w-full h-full object-cover">
 
                         <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
-                            <button onclick="openModal()" class="bg-primary-light text-white px-6 py-2 rounded-full font-bold">
+                            <button onclick="openModal('toolModal')" class="bg-primary-light text-white px-6 py-2 rounded-full font-bold">
                                 View Tool Details
                             </button>
                         </div>
@@ -586,9 +588,47 @@ I pay close attention to each requirement provided, carefully analyzing and vali
                     <div class="p-6">
                         <p class="text-primary-light text-xs font-bold uppercase mb-2">Custom Chrome Tool</p>
                         <h3 class="text-xl font-bold">Content Checker</h3>
-                        <p class="text-sm text-slate-500 mt-2">
-                            Quickly check if text exists on a webpage with instant highlighting and missing reports.
-                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOL 2 -->
+            <div class="group reveal">
+                <div class="overflow-hidden rounded-2xl border-2 border-slate-300 dark:border-slate-700 hover:-translate-y-2 hover:shadow-xl transition-all">
+                    <div class="relative bg-slate-100 dark:bg-slate-900">
+                        <img src="Alt Viewer.png" alt="Alt Viewer" class="w-full h-full object-cover">
+				
+
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                            <button onclick="openModal('toolModal2')" class="bg-primary-light text-white px-6 py-2 rounded-full font-bold">
+                                View Tool Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <p class="text-primary-light text-xs font-bold uppercase mb-2">Custom Chrome Tool</p>
+                        <h3 class="text-xl font-bold">Image Alt Checker</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOL 3 -->
+            <div class="group reveal">
+                <div class="overflow-hidden rounded-2xl border-2 border-slate-300 dark:border-slate-700 hover:-translate-y-2 hover:shadow-xl transition-all">
+                    <div class="relative bg-slate-100 dark:bg-slate-900">
+                        <img src="Tribo Pilipino Game.png" class="w-full h-full object-cover">
+
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                            <button onclick="openModal('toolModal3')" class="bg-primary-light text-white px-6 py-2 rounded-full font-bold">
+                                View Tool Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <p class="text-primary-light text-xs font-bold uppercase mb-2">Game developed</p>
+                        <h3 class="text-xl font-bold">Tribo Pilipino Game</h3>
                     </div>
                 </div>
             </div>
@@ -597,56 +637,61 @@ I pay close attention to each requirement provided, carefully analyzing and vali
     </div>
 </section>
 
-<!-- MODAL -->
+<!-- MODALS -->
+
+<!-- ORIGINAL MODAL -->
 <div id="toolModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
-    <div class="bg-white dark:bg-slate-900 max-w-2xl w-full rounded-xl p-6 relative overflow-y-auto max-h-[90vh]">
-
-        <button onclick="closeModal()" class="absolute top-4 right-4 text-xl">✕</button>
-
+    <div class="bg-white dark:bg-slate-900 max-w-2xl w-full rounded-xl p-6 relative">
+        <button onclick="closeModal('toolModal')" class="absolute top-4 right-4">✕</button>
         <h2 class="text-2xl font-bold mb-4">🔍 Content Checker</h2>
-
-        <p class="mb-6 text-sm text-slate-600 dark:text-slate-400">
-            A Chrome extension that helps you verify if text or content is live on a webpage. 
-            It highlights matches and shows missing items instantly.
-        </p>
-
-        <h3 class="font-bold mb-3">How to Use</h3>
-
-        <div class="space-y-4 text-sm">
-
-            <div>
-                <p><b>1. Open Tool</b> – Press your Keyboard Shortcut Key</p>
+        <p>A Chrome extension that helps you verify if text or content is live on a webpage. 
+            It highlights matches and shows missing items instantly.</p><br>
+                <p><b>Results</b> – Green = SCAN SUCCESS: All content matches correctly.</p>
                 <img src="scan1.png" class="mt-2 rounded border">
-            </div>
-
-            <div>
-                <p><b>2. Enter Text</b> – Whole Content</p>
-                <img src="scan2.png" class="mt-2 rounded border">
-            </div>
-
-            <div>
-                <p><b>3. Run Scan</b> – Click RUN SCAN</p>
-                <img src="scan3.png" class="mt-2 rounded border">
-            </div>
-
-            <div>
-                <p><b>4. Results</b> – Red = MISSING ITEMS</p>
-                <img src="scan4.png" class="mt-2 rounded border">
-            </div>
-
-            <div>
-                <p><b>5. Results</b> – Green = SCAN SUCCESS: All content matches correctly.</p>
-                <img src="scan5.png" class="mt-2 rounded border">
-            </div>
-
         <!-- DOWNLOAD BUTTON -->
         <div class="mt-8 flex justify-center">
-            <a href="YOUR_DOWNLOAD_LINK_HERE" target="_blank"
+            <a href="https://drive.google.com/drive/folders/1P401VnQwSCZkh24JCplwBuK3fi9PqE39?usp=sharing" target="_blank"
                class="bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 px-6 py-3 rounded-full font-bold hover:opacity-90 transition">
                 Download Tool
             </a>
         </div>
+    </div>
+</div>
 
+<!-- MODAL 2 -->
+<div id="toolModal2" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+    <div class="bg-white dark:bg-slate-900 max-w-2xl w-full rounded-xl p-6 relative">
+        <button onclick="closeModal('toolModal2')" class="absolute top-4 right-4">✕</button>
+        <h2 class="text-2xl font-bold mb-4">🖼 Image Alt Checker</h2>
+        <p>Find images without ALT text for SEO.</p><br>
+        <p><b>Helps</b> identify missing alt text to improve accessibility and SEO.</p>
+        <img src="Alt1.png" class="mt-2 rounded border">
+        <!-- DOWNLOAD BUTTON -->
+        <div class="mt-8 flex justify-center">
+            <a href="https://drive.google.com/drive/folders/1IN2AhhzcZbiTDMVTlv0v_QDssLCSZcf-?usp=sharing" target="_blank"
+               class="bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 px-6 py-3 rounded-full font-bold hover:opacity-90 transition">
+                Download Tool
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 3 -->
+<div id="toolModal3" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+    <div class="bg-white dark:bg-slate-900 max-w-2xl w-full rounded-xl p-6 relative">
+        <button onclick="closeModal('toolModal3')" class="absolute top-4 right-4">✕</button>
+        <h2 class="text-2xl font-bold mb-4">🎮 Tribo Pilipino Game</h2>
+        <p><b>Tribo Pilipino</b> is an Android RPG that explores the rich culture and traditions of Philippine tribes, allowing players to embark on immersive adventures inspired by indigenous heritage.</p><br>
+<video class="mt-2 rounded border" controls>
+  <source src="Tribo Pilipino.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+        <!-- DOWNLOAD BUTTON -->
+        <div class="mt-8 flex justify-center">
+            <a href="https://tribopilipino.vercel.app/" target="_blank"
+               class="bg-primary-light dark:bg-primary-dark text-white dark:text-slate-900 px-6 py-3 rounded-full font-bold hover:opacity-90 transition">
+                Download Game
+            </a>
         </div>
 
     </div>
@@ -654,13 +699,13 @@ I pay close attention to each requirement provided, carefully analyzing and vali
 
 <!-- SCRIPT -->
 <script>
-function openModal() {
-    document.getElementById('toolModal').classList.remove('hidden');
-    document.getElementById('toolModal').classList.add('flex');
+function openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+    document.getElementById(id).classList.add('flex');
 }
 
-function closeModal() {
-    document.getElementById('toolModal').classList.add('hidden');
+function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
 }
 </script>
 
